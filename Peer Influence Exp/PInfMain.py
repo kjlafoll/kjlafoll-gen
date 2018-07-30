@@ -1,3 +1,17 @@
+"""
+Author: Kyle J. LaFollette
+Department of Psychiatry, University of Arizona
+Correspondance: kjlafoll@psychiatry.arizona.edu
+
+This script runs Chiu et al.'s 2015 experiment investigating the effect 
+of peer influence, or 'other-conferred utility', on lottery 
+choice decision-making.
+
+Code has been adapted from that utilized by the original authors to 
+operate standalone in Python, using PsychoPy for stimulus presentation, 
+and pynput for event monitoring.
+"""
+
 from pynput import keyboard
 from psychopy.visual import *
 from psychopy import monitors
@@ -42,6 +56,8 @@ CIRCLE_SIZE = 250
 
 ROUND_COUNT = 96
 
+DATA_FOLDER = 'data/'
+SAVE_NAME = 'PREEMPT1_%s-PeerInfluenceData.txt'
 
 #===================================================================================================
 # TASK CLASSES
@@ -64,11 +80,13 @@ class LocalGame:
 	crtIndex = None
 	crtChoice = None
 	saveFrame = None
+	saveLoc = None
 
 	def __init__(self):
 		self.round = 0
+		self.saveLoc = DATA_FOLDER+SAVE_NAME
 		self.subID = input('Please enter 4-digit subject identifier (i.e., 0999): ')
-		while os.path.exists('data/PREEMPT1_%s-PeerInfluenceData.txt' % self.subID):
+		while os.path.exists(self.saveLoc % self.subID):
 			self.subID = input('Data already exists for subject identifier %s. Please provide another ID: ' % self.subID)
 		self.control_bank = None
 		self.localGraphics = GameGraphics()
@@ -214,7 +232,7 @@ class LocalGame:
 				titleFrame.append(x)
 		for i, x in enumerate(saveFrame):
 			saveFrame[i] = str(x)
-		with open('data/PREEMPT1_%s-PeerInfluenceData.txt' % self.subID, 'a') as file:
+		with open(self.saveLoc % self.subID, 'a') as file:
 			if self.round == 0:
 				file.write('\t'.join(titleFrame[0:]) + '\n')
 			file.write('\t'.join(saveFrame[0:]) + '\n')
@@ -366,8 +384,8 @@ def runRound(game):
 	game.round += 1
 
 if __name__ == "__main__":
-	if not os.path.exists('data/'):
-		os.mkdir('data/')
+	if not os.path.exists(DATA_FOLDER):
+		os.mkdir(DATA_FOLDER)
 	game = LocalGame()
 	game.revealPosition()
 	for x in range(ROUND_COUNT):
