@@ -3,7 +3,7 @@ PInfMain.py
 
 This script presents an adaptation of Chiu et al.'s 2015 experiment investigating
 the influence of peer influence, or 'other-conferred utility', on lottery choice
-decision-making. See the original paper [here](https://www.nature.com/articles/nn.4022#f5).
+decision-making. See the original paper [here](https://www.nature.com/articles/nn.4022).
 I adapted the code utilized by the original authors to operate standalone in Python,
 using PsychoPy for stimulus presentation, and pynput for event monitoring.
 
