@@ -14,4 +14,4 @@ are also some timing differences between trial stages, and differences in colori
 and stimulus positioning.
 
 As a disclaimer, this script will not run on MacOS High Sierra, as there are currently
-issues with threading specifically on that operating system.
+issues with threading specific to that operating system.
