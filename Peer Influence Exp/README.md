@@ -12,3 +12,6 @@ participants are assessed in groups of two, so there are only two positions in t
 and therefore there is only one partner. Consequentially, mix trials are omitted. There
 are also some timing differences between trial stages, and differences in coloring, sizing,
 and stimulus positioning.
+
+As a disclaimer, this script will not run on MacOS High Sierra, as there are currently
+issues with threading specifically on that operating system.
