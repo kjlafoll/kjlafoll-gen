@@ -170,6 +170,8 @@ class SearchTool:
 					doublecheck = input("Not a valid input. Would you like to save to %s? (y/n): " % self.saveDir)
 				if doublecheck == "y":
 					newFolder = input("Enter the name of a new folder to save to (will be created in %s): " % self.saveDir)
+					if not os.path.isdir(self.saveDir):
+						os.mkdir(self.saveDir)
 					if not os.path.isdir(self.saveDir+newFolder+self.tag):
 						os.mkdir(self.saveDir+newFolder+self.tag)
 					for x in self.matchlist:
