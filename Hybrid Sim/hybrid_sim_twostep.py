@@ -123,17 +123,17 @@ def hybrid_sim(alpha1, alpha2, lmbd, omega, beta1, beta2, p, rwrd_probs, diffuse
     q1 = {}
     q1['s1a1'] = 0
     q1['s1a2'] = 0
-    q2 = {(s, a): 0 for s in ('s2a1', 's2a2') for a in range(2)}
+    q2 = {(s, a): 0 for s in ('s2s1', 's2s2') for a in range(2)}
     exp = Exp(rwrd_probs)
     prev_choice = random.choice(('s1a1', 's1a2'))
     for trial in exp:
-        vpink = max([q2[('s2a1', a)] for a in range(2)])
-        vblue = max([q2[('s2a2', a)] for a in range(2)])
+        choice1 = max([q2[('s2s1', a)] for a in range(2)])
+        choice2 = max([q2[('s2s2', a)] for a in range(2)])
         # Determine the choice
-        if commontrans['s1a2'] == 's2a2':
-            cv = (2 * commonprob - 1) * (vpink - vblue)
+        if commontrans['s1a2'] == 's2s2':
+            cv = (2 * commonprob - 1) * (choice1 - choice2)
         else:
-            cv = (2 * commonprob - 1) * (vblue - vpink)
+            cv = (2 * commonprob - 1) * (choice2 - choice1)
         rep = 1 if prev_choice == 's1a1' else -1
         p_left = expit(beta1 * (omega * (cv) + (1 - omega) * (q1['s1a1'] - q1['s1a2']) + rep * p))
         if random.random() < p_left:
