@@ -364,6 +364,7 @@ class Interact:
 				pass
 			if key == keyboard.Key.esc:
 				listener.stop()
+				Window.close()
 				core.quit()
 		with keyboard.Listener(on_press=keyPress) as listener:
 			listener.join()
