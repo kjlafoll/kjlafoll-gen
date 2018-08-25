@@ -56,7 +56,7 @@ CIRCLE_SIZE = 250
 
 ROUND_COUNT = 96
 
-DATA_FOLDER = 'data/'
+DATA_FOLDER = 'PInfMain_Files/data/'
 SAVE_NAME = 'PREEMPT1_%s-PeerInfluenceData.txt'
 
 #===================================================================================================
@@ -249,7 +249,7 @@ class GameGraphics:
 		self.monitor.setSizePix(MONITOR_SIZE)
 		self.monitor.saveMon()
 		self.win = Window(size = WINDOW_SIZE, fullscr=False, screen=0, allowGUI=False, allowStencil=False, monitor='expMonitor', color=COLOR_BLACK, colorSpace='rgb255', blendMode='avg', useFBO=True, units=MONITOR_UNITS)
-		self.imgRoot = "ImgSource/"
+		self.imgRoot = "PInfMain_Files/ImgSource/"
 		self.staticStim = []
 
 	def newroundScreen(self):
