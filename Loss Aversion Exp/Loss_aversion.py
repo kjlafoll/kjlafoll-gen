@@ -37,7 +37,7 @@ def main():
     cycle = input("Please enter your cycle number: ")
     #initialize pygame
     pygame.init()
-    DISPLAYSURF = pygame.display.set_mode((WINDOWWIDTH, WINDOWHEIGHT))
+    DISPLAYSURF = pygame.display.set_mode((WINDOWWIDTH, WINDOWHEIGHT), FULLSCREEN)
     BASICFONT = pygame.font.Font('freesansbold.ttf', 18)
     
     
