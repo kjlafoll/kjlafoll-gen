@@ -1,0 +1,2 @@
+subID	cycle	slidenum	stimtype	timespent	subtrahend	onstimestamp
+03432	1	1	Immersion	90	NA	2018-10-18 12:34:07.153272
