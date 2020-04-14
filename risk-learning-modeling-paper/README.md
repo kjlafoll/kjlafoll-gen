@@ -1,2 +1,2 @@
-# kjlafoll-gen
-General repository for kjlafoll
+# risk-learning-modeling-paper
+Manuscript in preparation for Nature Human Behavior - Investigates computational substrates of model-based learning and risk perception/optimization
