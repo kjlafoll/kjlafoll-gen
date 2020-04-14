@@ -1,18 +1,18 @@
-#Latent factors of risk behavior predict the propensity for model-based control
+# Latent factors of risk behavior predict the propensity for model-based control
 
 *Kyle J. LaFollette*<sup>1,2</sup>, *Brieann C. Satterfield*<sup>1</sup>, *Michael P. Lazar*<sup>1</sup>, *William D. S. Killgore*<sup>1</sup>
 
 <sup>1</sup> *Department of Psychiatry, College of Medicine, University of Arizona*
 <sup>2</sup> *Department of Psychiatry, School of Medicine, Stanford University*
 
-#Abstract
+# Abstract
 
 Model-based control, and consequentially model-based learning, is liable to individual differences in risk perception and optimization, yet there is little known about the computational substrates of risk behavior and their association with learning. Here, we propose a number of relationships between distinct latent factors of risk behavior and the propensity for model-based control, and further argue that objective, environmental factors moderate these relationships. We formalize our hypotheses using observable performance indices, and two computational models of risk behavior and reinforcement-learning. These models formulate how individual differences in various latent factors, such as learning-rate and stochasticity of choice, explain variance in risky decision-making, learning strategies, and their intersection. We show that a number of latent factors of risk behavior are associated with the propensity for model-based control, and that these associations are dependent on high versus low-risk contextual factors. These findings suggest that model-based learners perceive more accurate representations of situational risk, and that the rate at which they update their expectations of risk is situationally dependent. Further, we find that model-based learners are more risk-tolerant and choose more stochastically under high-risk conditions than low-risk conditions. Together, our robust analyses support a profile of model-based learning that is influenced by individual differences in latent factors of risk behavior. The profile lends itself to the future investigation of model-based learning in clinical groups such as addiction disorders, which have previously neglected the concurrent assessment of both the computational substrates of model-based learning and risky decision-making.
 
  
-#1 | Introduction
+# 1 | Introduction
 
-##1.1 | Background
+## 1.1 | Background
 
 Most choices in life are best guided by learning from the context of past experience. Nonetheless, the extent to which decision-makers rely on context varies. We can make choices habitually, blind to the contingencies that interleave our actions, or we can learn these contingencies and plan our actions deliberately. Classic theoretical accounts of decision-making conceptualize these approaches as two systems, fast and slow, respectively (Sloman, 1996; Stanovich & West, 2000; Kahneman, 2003). Importantly, humans exploit both systems when learning. For example, when playing a game of chess, players rely on intuitive judgments to quickly compile a list of probable and effective moves. Players can then critically examine each of their compiled options. Repetition of intuitive pooling and critical analysis then improves the player’s heuristics for compiling options. Taken together, it is apparent that chess players, and humans in general, learn how to make effective choices by thinking both fast and slow. Recent efforts in computer science and artificial intelligence have aimed to model human learning using reinforcement-learning, a computational framework for representing value-guided decision-making. Reinforcement-learning formalizes these two systems in the form of model-free and model-based strategies (Daw, Niv and Dayan, 2005; Daw et al., 2011). Model-free strategy is both cognitively and computationally inexpensive, albeit to the detriment of accuracy, whereas model-based strategy is more demanding and precise. Accuracy, precision, and recall are all evaluator methods in comparing reinforcement-learning models, and all have analogues for human learning and performance.
 
@@ -26,25 +26,25 @@ Secondly, we hypothesized that individuals with slower updating-rates and greate
 
 To test these hypotheses, we fit hierarchical Bayesian models to participant choice data and used Markov Chain Monte Carlo and the No-U-Turn sampler in PyStan (Stan Development Team, 2018) to infer posterior distributions for each model’s parameters. The posteriors of these parameters were then subjected to mixed-effects logistic regression models to test our hypotheses. Additional analyses included simple linear regression models to test associations between parameter pairs.
 
-##1.2 | Objectives
+## 1.2 | Objectives
 
 In the present study, we investigated the association between multiple aspects of risk-taking behavior and the tendency to utilize model-based over model-free learning strategies. To elucidate this relationship, we compared performance on the Balloon Analogue Risk Task, or BART, a well-validated measure of risk-taking behavior (Lejuez et al., 2002), and a two-stage reinforcement learning decision task used to dissociate model-based from model-free strategies (Daw et al., 2011). 
 
-#2 | Method
+# 2 | Method
 
-##2.1 | Sample
+## 2.1 | Sample
 
 120 healthy adults (62 F, 21.6 ± 3 years of age) volunteered to participate in this study. All individuals were phone screened and excluded from experimentation on the basis of the following criteria: any history of psychiatric or neurological disorder, history of concussions or traumatic brain injury resulting in loss of consciousness for more than 30 minutes, self-report of cognitive impairment, self-report of any major or chronic medical condition, and treatment with any prescription or over-the-counter medications. Written, informed consent was obtained prior to participation, and compensation was awarded at a fixed amount upon completion and debrief. All participants were compensated $100 irrespective to performance. This study was approved by the University of Arizona’s Institutional Review Board and the USAMRMC Human Research Protection Office.
 
 27 participants were excluded from analyses on the basis of misunderstanding task goals or low reward motivation, leaving a sample size of 93 participants for analysis. Specific exclusionary criteria are described in section 2.3.1.
 
-##2.2 | Procedure
+## 2.2 | Procedure
 
-###2.2.1 | General Procedure
+### 2.2.1 | General Procedure
 
 After providing informed consent, subjects participated in the study over the course of two separate visits. In the first visit, subjects completed an intake questionnaire to collect basic demographic information. On the second visit, subjects participated in the Two Step task and the BART. The BART task was administered through the Psychology Experiment Building Language (PEBL) test battery (Mueller, 2012). Data reported hereto are a subset of a larger experiment including other aspects of performance under risk and stress.
 
-###2.2.2 | The Two-Step Sequential Reinforcement Learning Task
+### 2.2.2 | The Two-Step Sequential Reinforcement Learning Task
 
 The Two-Step task, as designed by Daw and colleagues (2011), dissociates model-free from model-based learning strategies. On each trial, subjects choose between two spaceships (Fig. 1A). Each of these first-stage options are linked to two second-stage states with an unknown, but stable transition probability. More specifically, each first-stage option is commonly (70% transition probability) associated with a specific second-stage state (the ‘common’ state) and is rarely (30% transition probability) associated with the other second-stage state (the ‘rare’ state). Subjects are explicitly instructed that this unknown transition structure would remain stable across all trials. Each second-stage state, a red and a purple planet, contains two second-stage choice options, two red or two purple aliens. The subject chooses one of these two presented aliens with the goal of being awarded ‘moon rocks’. The probability of each aliens awarding ‘moon rocks’ adjusts on a trail-by-trial basis by independently drifting Gaussian random walks (SD = 0.025), shifting between 0.2 and 0.8. These dynamic reward probabilities at the second-stage serve to necessitate exploration and encourage continued learning throughout the task. Subjects were instructed to maximize their earnings and that they would receive a cash bonus commensurate to their performance at the conclusion of the experiment.
 
@@ -52,7 +52,7 @@ Each subject completed 200 experimental trials across four blocks. Stage options
 
 Identifying model-based and model-free learning strategies is accomplished by interpreting first-stage stay behavior as a function of both previous trial reward and transition rarity. For example, a subject who employs more model-based strategies will use a cognitive model of both outcomes and transitions to inform actions, and as such would likely repeat a first-stage choice that led to an expected (via a common path) reward, but not a first-stage choice to led to an unexpected (via a rare path) reward. Conversely, a subject who employs more model-free strategies simply repeats previously rewarded first-stage choices, regardless of transition probability. Thus, extent that model-based learning affects choice behavior is measured by the interactive effect of reward and transition type on stay probability and the extent that model-free learning affects choice is measured by the main effect of reward on stay probability (Fig. 1B).
 
-###2.2.3 | The Balloon Analogue Risk Task (BART)
+### 2.2.3 | The Balloon Analogue Risk Task (BART)
 
 The Balloon Analogue Risk Task (BART) is a measure of risk taking behavior. On each trial, subjects are presented with the image of a balloon that holds some monetary value (Fig. 2). The value of each balloon is small upon presentation, but should the subject be willing to take a risk, they can ‘pump’ the balloon and inflate its value. However, should the balloon pop, its value becomes null and the subject forfeits their earnings. Alternatively, the subject can choose to ‘cash out’ at any time and secure the balloons current value. A new trial begins when the balloon bursts or the subject cashes out. The probability that a balloon will burst, P_burst, is defined as:
 
@@ -60,9 +60,9 @@ P_(burst,i)=  1/(x-i)  ,such that x>0
 
 where i is the current number of pumps and x is the maximum number of pumps allowed before explosion. Following Lejuez and colleagues original task design (2002), we ascribed three distinct values of x to three different balloon types: orange balloons where x=8; yellow balloons where x=32, and blue balloons where x=128. Subjects were not made aware of any burst probabilities, nor were they informed that probabilities varied across the different colored balloons. To minimize learning effects, we first presented subjects with 30 trials of mixed balloon types. Thereafter, we presented three blocks of 20 trials each, with one color exclusively allocated to each block. Blue, low-risk balloons were presented first, followed by yellow, moderate-risk balloons, and finally orange, high-risk balloons. Recorded performance metrics included the total number of attempted pumps, balloon type, and explosion status.
 
-##2.3 | Data Analysis – Two Step Task
+## 2.3 | Data Analysis – Two Step Task
 
-###2.3.1 | Two Step Stage 1 Repetition Probabilities
+### 2.3.1 | Two Step Stage 1 Repetition Probabilities
 
 Two Step task learning strategies were ascertained by analyzing first-stage choice behavior (stay vs. switch) as a function of previous reward (rewarded vs. unrewarded) and previous transition rarity (common vs. rare). An influence of model-free strategy is indicated by a main effect or previous reward, whereas an influence of model-based strategy is indicated by an interaction effect between previous reward and previous transition rarity. Prior studies have consistently found a mixture of both effects in healthy adult performance, suggesting that both model-based and model-free strategies influence first-stage choice in concert. We modeled first-stage choice using a generalized linear mixed-effect logistic regression analysis. Predictors included dummy variables (coded as -1/1) identifying whether the previous trial was rewarded and whether the previous transition was common or rare, and their interaction term. Additional covariates and their interactions with all aforementioned terms were included in models integrating Two Step and BART data. Random effects were taken for all within-subject predictors (Barr et al., 2013).
 
@@ -70,7 +70,7 @@ Firth’s penalized likelihood approach was implemented using the logistf packag
 
 The first 9 trials of each subject’s data were excluded from analyses, as well as any trials in which subjects failed to make a selection at either the first or second stage. 27 subjects who did not have at least 5% more stay decisions on previously rewarded trials with common trials than previously unrewarded trials with common transitions were excluded altogether from analyses, on the basis that such behavior is suggestive of misunderstood task goals or low reward motivation.
 
-###2.3.2 | Two Step Computational Modeling – Model Fitting
+### 2.3.2 | Two Step Computational Modeling – Model Fitting
 
 To better characterize trial-by-trial choice as a function of a subjects’ entire preceding histories of rewards and transition states, we fit a hybrid reinforcement learning model to subject data, as described by Otto and colleagues (2013). This model is a hybrid of the temporal-difference SARSA(λ) model-free algorithm (Rummery & Niranjan, 1994), which retrospectively updates expected values from prediction errors solely based on reward, and a model-based algorithm, which prospectively informs future first-stage values using the product of second-stage reward and experienced transition probability. Non-pooled, hierarchical models were used to generate individual posterior parameter estimates. Estimates were made using Hamiltonian Markov Chain Monte Carlo simulation in Stan 2.17, interfaced through the PyStan Python package. For each subject, we obtained 50,000 iterative samples across 5 chains (5,000 warmup samples per chain). Chain convergence was indicated by R ̂  ≈1.0.
 
@@ -84,7 +84,7 @@ rep(a)={ ■(1 if a | s_(i,t-1)@0 if a^' | s_(i,t-1) )
 
 The tendency to perseverate on the prior first-stage action, inconsiderate to action yields, increases where ρ > 0, whereas switching increases where ρ < 0.
 
-###2.3.3 | Two Step Computational Modeling – Model-Free Algorithm
+### 2.3.3 | Two Step Computational Modeling – Model-Free Algorithm
 
 The SARSA(λ) algorithm introduced three additional parameters to the hybrid model. This algorithm updates expected Q values for each state-action pair according to the following delta rule: 
 
@@ -100,7 +100,7 @@ e_(i,t) (s_(i,t),a_(i,t) )= e_(i-1,t) (s_(i,t),a_(i,t) )+1
 
 Whereas first-stage RPEs are driven solely by second-stage value (as r_(1,t)=0), second-stage RPEs are modulated by both an eligibility trace decay-rate and reward r_(2,t). This eligibility trace decays exponentially over time, where at the first-stage, e_(1,t)=1, and at the second-stage, e_(2,t)= λe_(1,t). The free parameter λ down-weights second-stage RPEs from trial t-1 to update first-stage expected values on trial t (Sutton & Barto, 1998). Thus, if λ = 0 (standard temporal difference learning), only the current state is eligible for updating. If λ = 1 (Full Monte Carlo Learning), values at all historically visited states are updated. 
 
-###2.3.4 | Two Step Computational Modeling – Model-Based Algorithm
+### 2.3.4 | Two Step Computational Modeling – Model-Based Algorithm
 
 The model-based algorithm introduces no additional parameters but is an essential component for estimating Q-values in the hybrid model. This algorithm updates second-stage state-action pairs similarly to SARSA(λ), with the exception that expected values at the first-stage are instead learned via a single backup operation, defined in terms of Bellman’s equation (Sutton & Barto, 1998):
 
@@ -108,7 +108,7 @@ Q_MB (s_A,a_t )=P(s_B│s_A,a_t )    max┬(a^'∈{a_A,a_B})⁡〖Q_MF (s_B,a^' 
 
 where s_A is the first-stage state, s_B is one possible second stage state, s_C is another possible second stage state, and P(s_Y│s_X,a_t ) is the probability that state Y will follow state X after choosing a_t. At the second-stage, the process for determining immediate expected values is no different than that of the SARSA(λ) algorithm, since Q_MB (s_(Y,t),a_t )= r_(2,t). As such, both algorithms converge at the second-stage and Q_MB= Q_MF. 
 
-###2.3.5 | Two Step Computational Modeling – Hybrid Algorithm
+### 2.3.5 | Two Step Computational Modeling – Hybrid Algorithm
 
 To assess the influence of both model-based and model-free strategy on choice behavior, we combine the Q-values estimated from both algorithms into net action values, Q_net. These are defined as a weighted sum such that
 
@@ -116,17 +116,17 @@ Q_net (s_A,a_t )= ω∙Q_MB (s_A,a_t )+(1-ω)∙Q_MF (s_A,a_t)
 
 where ω is a weighting parameter that determines the contribution of both model-based and model-free strategies. When ω = 1, the model is informed solely from the model-based algorithm, whereas when ω = 0, the SARSA(λ) algorithm is the sole contributor. As with the model-based algorithm, at the second-stage, Q_net= Q_MB= Q_MF. Given that this hybrid model is a composition of both previously described algorithms, it relies on a total of 7 free parameters: β1 and β2 to determine how stochastic choices are at the first and second stage; α1 and α2 to describe learning-rates at the first and second stage; ρ to account for perseverance of first-stage choices; λ to describe the influence of second-stage RPEs on first-stage expected values; and ω to weight the influence of the model-based and model-free systems on choice behavior.  
 
-##2.4 | Data Analysis – Balloon Analogue Risk Task
+## 2.4 | Data Analysis – Balloon Analogue Risk Task
 
-###2.4.1 | BART Performance Indices
+### 2.4.1 | BART Performance Indices
 
 Two indices of risk tolerance were analyzed: (1) the total number of successfully cashed out balloons, and (2) the total money won. We assessed these measures across all three blocks of low-to-high-risk balloon types. The initial block of 30 mixed trials was excluded from analysis. BART indices were included as covariates in mixed-effects logistic regression models to assess their influence on Two Step model-based/ model-free learning strategies.
 
-###2.4.2 | BART Computational Modeling – Model Fitting
+### 2.4.2 | BART Computational Modeling – Model Fitting
 
 Similar to our modeling of the Two Step task, we fit a re-parameterized formulation of Wallsten et. al’s constant-probability BART model (see Wallsten et. al., 2005) to subject data. We re-parameterized the terms of this model to avoid inter-term correlations in the posterior and to improve sampling efficiency (Papaspiliopoulos, Roberts & Sköld, 2007). This re-parameterized constant-probability model uses a simple Bayesian update rule to iteratively modify the subjective probability that a balloon h will not explode. Non-pooled, hierarchical models were used to generate individual posterior parameter estimates. Estimates were made using Hamiltonian Markov Chain Monte Carlo simulation in Stan 2.17, interfaced through the PyStan Python package. For each subject, we obtained 50,000 iterative samples across 5 chains (5,000 warmup samples per chain). Chain convergence was indicated by R ̂  ≈1.0.
 
-###2.4.3 | BART Computational Modeling – Constant-Probability BART Model 
+### 2.4.3 | BART Computational Modeling – Constant-Probability BART Model 
 
 We used a posteriori estimation to fit 4 free parameters from the constant-probability model to subject data. Two of these free parameters originate from the Bayesian update rule for calculating the subjective probability that balloon h will not explode, q_h , considerate to the number of pumps attempted on the prior balloon, m_(h^' ):
 
@@ -140,7 +140,7 @@ q_h=  (α_h+ μ∑_(h^'=1)^(h-1)▒〖(m_(h^' )-d_(h^' ))〗)/(1+μ∑_(h^'=1)^(
 
 where α_h is the prior belief that balloon h will not explode, and μ is the updating-rate, or the rate at which pumping increases the belief that a balloon will explode. 
 
-###2.4.4 | BART Computational Modeling – Response Rule
+### 2.4.4 | BART Computational Modeling – Response Rule
 
 Another critical assumption of the constant-probability model is that the decision-maker determines the optimal number of pumps at the beginning of each trial and is tied to that optimization for the trial’s entirety. This optimal number of pumps, g_h, introduces our third free parameter, and can be expressed as:
 
@@ -152,13 +152,13 @@ r_(h,i)=  1/(1+e^(β(i-g_h)) )  ,such that β≥0
 
 Where β, our fourth and final free parameter, is the inverse-temperature determining how stochastic pumps are. As β → ∞, the decision-maker’s actions are solely determined by the distance between pump i and the optimal number of pumps g_h. As β → 0, actions become purely stochastic.
 
-#3 | Results
+# 3 | Results
 
-##3.1 | Sensitivity Analyses
+## 3.1 | Sensitivity Analyses
 
 For each linear analysis reported hereafter, we computed Cook’s distances to identify bivariate points of influence. Observations with a Cook’s distance greater than the conventional 4/N (or 0.043, where N=93) were excluded from each analysis separately on a model-by-model basis. Analyses were then rerun on remaining subset. All reported linear regressions were subject to this procedure. For transparency, we report ‘cooks’ to indicate the number of subjects excluded from each model due to high leverage.
 
-##3.2 | BART Performance Indices and Two Step Stay Behavior
+## 3.2 | BART Performance Indices and Two Step Stay Behavior
 
 Subjects completed 200 trials of the two-step task. Mixed effects logistic regression revealed both model-based and model-free signatures in choice behavior at the group level (Fig. 3). The effect of previous reward was determined to significantly predict stay behavior, indicating the use of model-free strategy (B = 0.419, Z = 18.792, p < 0.001). Furthermore, the interaction effect of previous reward and transition type also predicted stay behavior, indicating model-based strategy (B = 0.361, Z = 16.103, p < 0.001). See Table 1.
 
@@ -166,7 +166,7 @@ To examine the relationship between model-based / model-free decision strategy a
 
 Contrary to these findings, we did determine that total money earned across high-risk balloons was positively associated with the Two Step model-based signature (Z = 3.43, p = 0.001). Further, we found that the number of adjusted (cashed) high-risk balloons moderated this effect (Z = 3.97, p < 0.001). These findings suggest that model-based learners perform better when making high-risk decisions. See Table 3.
 
-##3.3 | BART Modeling Parameters and Two Step Stay Behavior
+## 3.3 | BART Modeling Parameters and Two Step Stay Behavior
 
 We next fit subjects’ performance data for low-risk balloons to the constant-probability model described in Method to estimate posterior distributions for each parameter (see Table 4). To support the aforementioned findings, we next ran similar mixed-effects logistic regression models of stay behavior, but with the constant-probability BART modeling parameters as covariates. All modeling parameters with significant positive skew (μ, γ, β) were log transformed to improve linearity, whereas negatively skewed parameters (α) were square transformed. For high-risk and low-risk balloons, we found a significant interaction effect of α, the prior belief that a balloon will not explode, on model-based strategy (Z = 3.19, p < 0.001), such that individuals who believe that balloons are more likely to explode on the high-risk BART trials than the low-risk also tend to utilize more model-based learning strategies on the Two Step. We did not find a similar relationship with the model-free signature. See Table 5 and Fig. 4).
 
@@ -176,7 +176,7 @@ As with μ, we found that γ+, a subject’s propensity for risk-taking, was rel
 
 Lastly, we considered the effect of β, the degree to which subjects pumped BART balloons deterministically versus stochastically, on Two Step stay behavior. For low-risk balloons, we found a significant positive effect of β on stay probabilities (Z = 2.26, p = 0.023), such that individuals who pumped more deterministically also tended to repeat more first-stage Two Step choices (see Table 8 and Fig. 8). We also found a four-way interaction between β and the model-based signature (Z = -2.08, p = 0.38) suggesting that greater exploitation during low-risk BART trials than high-risk trials is related to an increased implementation of model-based strategy on the Two Step. Additionally, we found a similar interaction effect with stochasticity in both risk-conditions and the model-free signature (Z = 3.06, p = 0.002) such that increased model-free strategy is associated with greater stochastic choices across both objectively high and low-risk conditions. See Fig.9.
 
-##3.4 | BART and Two Step Modeling Parameters
+## 3.4 | BART and Two Step Modeling Parameters
 
 We next fit subjects’ choice data to the hybrid reinforcement learning model described in Method to estimate posterior distributions for each parameter (see Table 2). To verify and further investigate our findings relating BART modeling parameters to Two Step stay behavior, we conducted simple linear regression models of the estimated Two Step parameter posterior means using the BART posterior means as predictors. As with the BART parameter estimates, Two Step parameters with significant positive skew were log transformed (β1, β2, ρ). 
 
@@ -186,17 +186,17 @@ Second, we found that the BART γ+, or risk-tolerance, was significantly predict
 
 Lastly, we found that BART β, or decision stochasticity, was predictive of the Two Step ω, (B = 0.13, t = 2.12, p = 0.037) such that individuals who choose more stochastically on high-risk BART trials than low-risk trials tend to be more influenced by model-based learning strategies. This suggests that the degree to which individuals explore action-consequence pairs is also associated with their learning strategies, and that objective risk context too modulates this relationship. See Fig. 12.
 
-#4 | Discussion
+# 4 | Discussion
 
-##4.1 | Summary
+## 4.1 | Summary
 
 In this study, we tested the relationship between individual differences in risk behavior across two conditions of risk, high and low, and the propensity to employ model-free and model-based learning strategies. Model-based strategies are prospective and computationally demanding, whereas model-free strategies are retrospective and inexpensive. We found that individuals made use of both strategies in their choice behavior. We also discovered that the employment of model-based strategy on the Two Step task was moderated by a number of differences in risk behavior on the BART, conditional on the level of risk experienced. In contrast, we found very little evidence for a similar moderating relationship between risk behavior and model-free strategy.
 
-##4.2 | Associations with Risk Behavior
+## 4.2 | Associations with Risk Behavior
 
 First, we assessed the observable performance indices from the BART, the total number of cashed balloons, and the total amount of money earned. We found that as individuals made more money on low-risk balloons, they tended to make less stay choices on the Two Step. If individuals are inclined to employ similar strategies across these two tasks, this suggests that strong performance under low-risk is associated with non-perseverative behavior. It is difficult to infer from this surface-level analysis what aspect of decision-making could be driving this relationship. One suggestion is that reduced perseveration relates to increased cognitive flexibility (Dreisbach & Goschke, 2004) and that individuals with greater flexibility are more capable of switching from activation to inhibition over the course of ‘pumping’ a low-cost balloon. Turning to high-risk trials, we found that more money earned was associated with a greater propensity for model-based control. Furthermore, we found that the total number of adjusted (cashed) balloons positively interacted with this relationship. If we consider the total number of cashed balloons to be proximal index for risk tolerance, this suggests that the propensity for model-based learning may reflect variability in optimization. Taken together, these findings support the notion that metrics of performance under risk are predictive of individual differences in the deployment of model-based control.
 
-##4.3 | Associations with the Computational Substrates of Risk
+## 4.3 | Associations with the Computational Substrates of Risk
 
 We next compared data from the Two Step task with data from the BART, in conjunction with a model that quantified four latent factors of risk behavior. Importantly, we dissociated these factors between two conditions of risk, high and low, to evaluate deviations in subjective risk perception from objective risk. 
 
@@ -213,11 +213,11 @@ Interestingly, when we expanded on these findings by evaluating the predictive a
 
 Previous studies have thoroughly assessed the model-based and model-free learning profiles in clinical addiction disorders (Hogarth, Chase, and Baess, 2012; Lorains et al., 2014; Sebold et al., 2014; Deserno et al., 2015; Reiter et al., 2016; Groman et al., 2019; Wyckmans et al., 2019 PREPRINT). However, to our knowledge, no study has considered the computational substrates of risk perception and optimization that may precipitate these conditions. We have identified four such substrates and have charted a profile for their moderating effects on model-based control with respect to distinct contextual factors. These results support the use of computational methods such as reinforcement-learning models for investigating the underlying bases of decision-making in addiction disorder and other clinical populations with deficits in decision-making. There are multiple paths in which we envision future studies expanding on these findings. First, we suggest that the pursuit of latent factors such as those discussed in this report be paired with neuroimaging methods to identify their neural substrates and relate those to the propensity for model-based control. Such future work could provide insights into the effects of developmental and neurodegenerative disorder and disease on both risk behavior and learning. Second, we suggest that future studies aim to find means to manipulate these factors with the goal of treating deficits in model-based control. For example, a future study could aim to treat patients’ ability to adjust their evaluations of risk to be appropriate for the risk-level of a situation at hand. Kurdi, Gershman & Banaji, recently reported that the updating of implicit evaluations is impervious to model-based learning (2019), so if we interpret the BART’s μ as representative of the updating of an implicit evaluation of risk, future work might aim to treat updating deficits through habitual association. Treatments such as this could have the potential to train latent factors of behavior that contribute to the propensity for model-based control.
 
-#5 | Conclusion
+# 5 | Conclusion
 
 The present findings suggest that the propensity for model-based learning can be identified through the evaluation of individual differences in risk behavior. Further, they suggest that the relationships between this propensity and subjective differences in risk perception and optimization can be dependent on the severity of objective risk. Together, the findings from our robust analyses elucidate for the first time an underlying relationship between latent factors of learning and risk behavior. Through the utilization of two reinforcement learning frameworks, these data provide computational specificity that may guide future studies toward the identification of the neural infrastructure at the intersection of model-based learning and risk behavior. Not only could this provide a better understanding the underlying brain function but elucidating this intersection could have profound implications for the development of learning interventions and behavioral treatment in both typical developing and clinical groups. 
 
-#6 | Footnotes
+# 6 | Footnotes
 
 This work was supported by the U.S. Army Medical Research and Development Command grant W81XWH-17-008.
 
@@ -226,10 +226,8 @@ To whom correspondence may be addressed. Email: kjlafoll@stanford.edu
 Author contributions: K.J.L., B.C.S., M.P.L., and W.D.S.K. designed research; K.J.L., B.C.S., and M.P.L. performed research; K.J.L. analyzed data; K.J.L. wrote the paper.
 
 The authors declare no conflict of interest.
-
-
  
-#7 | References
+# 7 | References
 
 Barr, DJ., Levy, R., Scheepers, C., Tily, HJ. (2013). Random effects structure for confirmatory hypothesis testing: Keep it maximal. Journal of Memory and Language, 68(3), 255-278
 
