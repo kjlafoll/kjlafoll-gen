@@ -71,8 +71,8 @@ CUEDELAY_TIME = 7.5
 PROBE_TIME = 3
 REVIEW_TIME = 2
 
-DATA_FOLDER = os.path.join(os.environ['USERPROFILE'])+"\\Desktop\\PREEMPT2\\AMOMain\\AMOexp\\Data_AMOexp\\"
-IMG_FOLDER = os.path.join(os.environ['USERPROFILE'])+"\\Desktop\\PREEMPT2\\AMOMain\\AMOexp\\RES_AMOexp\\"
+DATA_FOLDER = "AMOexp/Data_AMOexp/"
+IMG_FOLDER = "AMOexp/RES_AMOexp/"
 SAVE_NAME = 'PREEMPT1_%s-AMOData.txt'
 INSTRUCT_SAVE_NAME = 'PREEMPT1_%s-AMOInstructData.txt'
 QUIZ_SAVE_NAME = 'PREEMPT1_%s-AMOQuizData.txt'
@@ -155,7 +155,7 @@ class LocalGame:
 	def generateImgBanks(self):
 		# define imgBank_instruct & imgBank_quiz
 		for x in range(1,13):
-			self.imgBank_instruct.append("Slide" + str(x) + ".jpg")
+			self.imgBank_instruct.append("Slide" + str(x) + ".JPG")
 		# for x in range(12,23):
 		# 	self.imgBank_quiz.append("Slide" + str(x) + ".jpg")
 
